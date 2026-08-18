@@ -29,7 +29,7 @@
 
 字段说明：
 
-- `interface.display_name`：界面显示的名字，直接写成中文。
+- `interface.display_name`：界面显示的名字，直接写成中文；**多技能仓库用三段式 `仓库总名｜类别前缀｜技能中文名`**（仓库总名按安装来源汉化，类别前缀参考 metadata.tags / description / 仓库 categories，统一 2 字词，如 `AI 编程超能力｜调试｜系统化调试`）。
 - `interface.short_description`：界面简介（25–74 字符），写成中文短句。
 - `interface.default_prompt`：默认提示词，要显式提到 `$技能名`。
 - `interface.icon_small` / `icon_large`：图标路径，**仅在技能已有 assets 图标时才写**，否则省略；路径不能改。
