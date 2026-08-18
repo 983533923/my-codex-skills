@@ -67,7 +67,7 @@ description: "中文技能模板与技能中文化指南。Use when creating a n
 
 | 字段 | 写法 |
 | --- | --- |
-| `interface.display_name` | 中文技能名，简洁（如"技能查找器"） |
+| `interface.display_name` | 单技能用中文名；**多技能仓库用三段式：`仓库总名｜类别前缀｜技能中文名`**（见下方说明） |
 | `interface.short_description` | 中文简介（约 25–74 字符），一句话说明功能和适用场景 |
 | `interface.default_prompt` | 中文默认提示词，必须提到 `$技能名`（用该技能的 name） |
 | `icon_small` / `icon_large` | 仅在技能目录已有 assets 图标时才写，否则省略 |
@@ -80,6 +80,20 @@ interface:
   short_description: "一句话中文简介（功能 + 适用场景）"
   default_prompt: "使用 $技能name 帮我……（中文示例提示词）"
 ```
+
+**多技能仓库的 display_name 命名：**
+
+当一次安装的多个技能来自同一个仓库、且分属多个类别时，`display_name` 用三段式，让界面一眼区分来源和类别：
+
+```
+仓库总名｜类别前缀｜技能中文名
+```
+
+- **仓库总名**：依据安装来源（GitHub 仓库名、README、仓库描述）翻译成中文全称，例如 jnMetaCode/superpowers-zh → "AI 编程超能力"；
+- **类别前缀**：统一 2 字词（入门 / 规划 / 开发 / 测试 / 调试 / 审查 / 质量 / 技能 / 文档 / 规范 / 工作流），判断依据依次为 `metadata.hermes.tags`、SKILL.md 的 `description` 和正文、仓库 categories 目录结构；
+- **技能中文名**：该技能的中文名。
+
+示例：`AI 编程超能力｜调试｜系统化调试`。
 
 注意：键名（`interface:`、`display_name:` 等）保持英文，字符串值用英文双引号包裹，文件保存为 UTF-8 无 BOM。
 
